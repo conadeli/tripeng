@@ -1,0 +1,103 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "title": "공항에서 유용한 여행영어 표현",
+      "icon": "Plane",
+      "subcategories": [
+        {
+          "id": 11,
+          "title": "공항 보안 검색대에서 영어로 대화하는 법",
+          "questions": [
+            {
+              "id": 1,
+              "audioUrl": "/audio/security-check-1.mp3",
+              "text": "Please remove your laptop and place it in a separate bin.",
+              "meaning": "노트북을 꺼내서 별도의 바구니에 놓아주세요.",
+              "answers": {
+                "korean": [
+                  "네, 노트북을 꺼내서 따로 바구니에 넣겠습니다.",
+                  "알겠습니다. 노트북을 분리해서 놓을게요."
+                ],
+                "english": [
+                  "Yes, I'll take out my laptop and put it in a separate bin.",
+                  "Sure, I'll place my laptop separately."
+                ]
+              }
+            },
+            {
+              "id": 2,
+              "audioUrl": "/audio/security-check-2.mp3",
+              "text": "Do you have any liquids or sharp objects in your carry-on?",
+              "meaning": "기내 수하물에 액체류나 날카로운 물건이 있습니까?",
+              "answers": {
+                "korean": [
+                  "아니요, 액체류나 날카로운 물건은 없습니다.",
+                  "제 기내 수하물에는 그런 물건들이 없습니다."
+                ],
+                "english": [
+                  "No, I don't have any liquids or sharp objects.",
+                  "There are no such items in my carry-on luggage."
+                ]
+              }
+            },
+            {
+              "id": 3,
+              "audioUrl": "/audio/security-check-3.mp3",
+              "text": "Please step through the metal detector.",
+              "meaning": "금속 탐지기를 통과해 주세요.",
+              "answers": {
+                "korean": [
+                  "네, 통과하겠습니다.",
+                  "알겠습니다. 지금 통과할게요."
+                ],
+                "english": [
+                  "Yes, I'll go through now.",
+                  "Okay, I'm stepping through."
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "비행기 탑승 수속 영어 – 체크인부터 출국 심사까지",
+          "questions": [
+            {
+              "id": 4,
+              "audioUrl": "/audio/check-in-1.mp3",
+              "text": "May I see your passport and flight ticket, please?",
+              "meaning": "여권과 항공권을 보여주시겠습니까?",
+              "answers": {
+                "korean": [
+                  "여기 여권과 항공권 있습니다.",
+                  "네, 준비했습니다. 여기 있습니다."
+                ],
+                "english": [
+                  "Here's my passport and flight ticket.",
+                  "Yes, I have them ready. Here you go."
+                ]
+              }
+            },
+            {
+              "id": 5,
+              "audioUrl": "/audio/check-in-2.mp3",
+              "text": "Would you prefer a window or aisle seat?",
+              "meaning": "창가 좌석과 통로 좌석 중 어느 것을 선호하시나요?",
+              "answers": {
+                "korean": [
+                  "창가 좌석으로 부탁드립니다.",
+                  "통로 쪽 자리로 해주세요."
+                ],
+                "english": [
+                  "I'd like a window seat, please.",
+                  "An aisle seat, please."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

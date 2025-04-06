@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://trip05.kr/sitemap.xml
+Sitemap: https://your-domain.com/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 10

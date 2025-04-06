@@ -1,20 +1,20 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import HomePage from './pages/HomePage';
-import AirportEnglishPage from './pages/AirportEnglishPage';
-import HotelEnglishPage from './pages/HotelEnglishPage';
-import RestaurantEnglishPage from './pages/RestaurantEnglishPage';
-import ShoppingEnglishPage from './pages/ShoppingEnglishPage';
-import TransportationEnglishPage from './pages/TransportationEnglishPage';
-import EmergencyEnglishPage from './pages/EmergencyEnglishPage';
-import InflightEnglishPage from './pages/InflightEnglishPage';
-import WelcomePopup from './components/WelcomePopup';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import HomePage from "./pages/HomePage";
+import AirportEnglishPage from "./pages/AirportEnglishPage";
+import HotelEnglishPage from "./pages/HotelEnglishPage";
+import RestaurantEnglishPage from "./pages/RestaurantEnglishPage";
+import ShoppingEnglishPage from "./pages/ShoppingEnglishPage";
+import TransportationEnglishPage from "./pages/TransportationEnglishPage";
+import EmergencyEnglishPage from "./pages/EmergencyEnglishPage";
+import InflightEnglishPage from "./pages/InflightEnglishPage";
+import WelcomePopup from "./components/WelcomePopup";
 
 function App() {
   return (
     <Router>
-      <WelcomePopup />
+      {/* <WelcomePopup /> */}
       <div className="min-h-screen bg-gray-50">
         <Header />
         <Routes>

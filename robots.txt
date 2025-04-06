@@ -1,13 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://trip05.kr/sitemap.xml
-
-# Crawl-delay
-Crawl-delay: 10
-
-# Disallow
-Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
+Sitemap: https://your-domain.com/sitemap.xml

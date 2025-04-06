@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Play, Eye, Languages } from "lucide-react";
 import { Question } from "../types";
-import Speech from "speak-tts";
 
 interface QuestionCardProps {
   question: Question;
@@ -13,80 +12,90 @@ export default function QuestionCard({ question }: QuestionCardProps) {
   const [showKoreanAnswers, setShowKoreanAnswers] = useState<number[]>([]);
   const [showEnglishAnswers, setShowEnglishAnswers] = useState<number[]>([]);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [speech, setSpeech] = useState<Speech | null>(null);
 
-  useEffect(() => {
-    const speech = new Speech();
-    speech
-      .init({
-        volume: 1,
-        lang: "en-US",
-        rate: 0.85,
-        pitch: 1.0,
-        voice: "Google US English",
-        splitSentences: true,
-      })
-      .then(() => {
-        setSpeech(speech);
-      })
-      .catch((e: Error) => {
-        console.error("An error occurred while initializing speech:", e);
-      });
-  }, []);
-
-  const playQuestion = () => {
-    if (!speech) return;
-
+  const playQuestion = async () => {
     setIsPlaying(true);
 
-    // 문장 분석을 통한 억양 최적화
-    const isQuestion = question.text.endsWith("?");
-    const isCommand =
-      question.text.startsWith("Please") || question.text.endsWith(".");
+    try {
+      // Adjust speech parameters based on sentence type
+      const isQuestion = question.text.endsWith("?");
+      const isCommand =
+        question.text.startsWith("Please") || question.text.endsWith(".");
 
-    let rate = 0.85;
-    let pitch = 1.0;
+      let rate = 0.85;
+      let pitch = 1.0;
 
-    if (isQuestion) {
-      pitch = 1.1;
-      rate = 0.8;
-    } else if (isCommand) {
-      pitch = 0.95;
-      rate = 0.9;
-    }
+      if (isQuestion) {
+        pitch = 1.1;
+        rate = 0.8;
+      } else if (isCommand) {
+        pitch = 0.95;
+        rate = 0.9;
+      }
 
-    // 문장 길이에 따른 속도 조절
-    const words = question.text.split(" ").length;
-    if (words > 10) {
-      rate *= 0.95;
-    }
+      // Adjust rate based on sentence length
+      const words = question.text.split(" ").length;
+      if (words > 10) {
+        rate *= 0.95;
+      }
 
-    speech.setLanguage("en-US");
-    speech.setRate(rate);
-    speech.setPitch(pitch);
-    speech.setVoice("Google US English");
-
-    speech
-      .speak({
-        text: question.text,
-        queue: false,
-        listeners: {
-          onstart: () => {
-            setIsPlaying(true);
+      const response = await fetch(
+        `https://texttospeech.googleapis.com/v1/text:synthesize?key=${
+          import.meta.env.VITE_GOOGLE_CLOUD_API_KEY
+        }`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-          onend: () => {
-            setIsPlaying(false);
-          },
-          onerror: (e: Error) => {
-            console.error("Speech synthesis error:", e);
-            setIsPlaying(false);
-          },
-        },
-      })
-      .catch((e: Error) => {
-        console.error("An error occurred while speaking:", e);
+          body: JSON.stringify({
+            input: { text: question.text },
+            voice: {
+              languageCode: "en-US",
+              name: "en-US-Neural2-C",
+              ssmlGender: "FEMALE",
+            },
+            audioConfig: {
+              audioEncoding: "MP3",
+              speakingRate: rate,
+              pitch: pitch,
+            },
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      // Convert base64 to blob
+      const audioContent = data.audioContent;
+      const binaryString = window.atob(audioContent);
+      const bytes = new Uint8Array(binaryString.length);
+      for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      const blob = new Blob([bytes], { type: "audio/mp3" });
+      const audioUrl = URL.createObjectURL(blob);
+
+      // Play the audio
+      const audio = new Audio(audioUrl);
+      audio.onended = () => {
         setIsPlaying(false);
-      });
+        URL.revokeObjectURL(audioUrl);
+      };
+      audio.onerror = (error) => {
+        console.error("Error playing audio:", error);
+        setIsPlaying(false);
+        URL.revokeObjectURL(audioUrl);
+      };
+      await audio.play();
+    } catch (error) {
+      console.error("Error synthesizing speech:", error);
+      setIsPlaying(false);
+    }
   };
 
   const toggleKoreanAnswer = (index: number) => {

@@ -1,0 +1,16 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "여행영어를 쉽게 배우는 방법?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trip05.kr에서 공항, 호텔, 식당 등 상황별 영어 표현을 무료로 배울 수 있어요."
+      }
+    }
+  ]
+}
+</script>

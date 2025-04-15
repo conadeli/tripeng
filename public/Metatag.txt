@@ -1,0 +1,25 @@
+<!-- 필수 메타태그 -->
+<title>Trip05.kr - 여행영어 & 쉬운영어 표현 모음</title>
+<meta name="description" content="화상영어, 영어독학, 성인영어까지! 여행갈 때 꼭 필요한 상황별 영어 표현 총정리. 해외여행 준비 끝내기!">
+<meta name="keywords" content="여행영어, 공항영어, 호텔영어, 식당영어, 화상영어, 영어독학, 성인영어, 쉬운영어, 여행추천, 해외여행, 영어회화, 여행필수표현">
+<meta name="author" content="trip05.kr">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph (SNS 공유용) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Trip05.kr - 여행영어 & 쉬운영어 표현 모음">
+<meta property="og:description" content="공항, 호텔, 식당, 교통 상황별 여행영어 총정리. 해외여행 준비는 trip05.kr 하나면 끝!">
+<meta property="og:url" content="https://trip05.kr/">
+<meta property="og:image" content="https://trip05.kr/대표이미지.png">
+
+<!-- Twitter 카드용 -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Trip05.kr - 여행영어 & 쉬운영어">
+<meta name="twitter:description" content="화상영어, 영어독학, 해외여행 준비 완벽 가이드">
+<meta name="twitter:image" content="https://trip05.kr/대표이미지.png">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://trip05.kr/">
+
+<!-- favicon -->
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
